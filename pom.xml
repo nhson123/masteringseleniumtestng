@@ -25,9 +25,10 @@
         <driver-binary-downloader-maven-plugin.version>1.0.17</driver-binary-downloader-maven-plugin.version>
         <!-- Configurable variables -->
         <threads>1</threads>
-        <browser>edge</browser>
+        <browser>phantomjs</browser>
         <overwrite.binaries>false</overwrite.binaries>
         <skipTests>false</skipTests>
+        <overwriteFilesThatExist>false</overwriteFilesThatExist>
     </properties>
 
 
@@ -85,7 +86,13 @@
                         <webdriver.edge.driver>
                             src\\test\\resources\\selenium_standalone_binaries\\windows\\edge\\64bit\\MicrosoftWebDriver.exe
                         </webdriver.edge.driver>
-                        <phantomjs.binary.path>src\\test\\resources\\selenium_standalone_binaries\\windows\\phantomjs.64bit\\phantomjs.exe</phantomjs.binary.path>
+                        <webdriver.opera.driver>
+                            src\\test\\resources\\selenium_standalone_binaries\\windows\\operachromium\\64bit\\operadriver.exe
+                        </webdriver.opera.driver>
+                        <phantomjs.binary.path>
+                            src\\test\\resources\\selenium_standalone_binaries\\windows\\phantomjs\\64bit\\phantomjs.exe
+                        </phantomjs.binary.path>
+
                     </systemProperties>
                     <includes>
                         <include>**/*WD.java</include>
@@ -134,7 +141,6 @@
             <artifactId>phantomjsdriver</artifactId>
             <version>1.4.4</version>
         </dependency>
-
 
 
     </dependencies>

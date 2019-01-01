@@ -27,7 +27,7 @@
         <threads>1</threads>
         <browser>edge</browser>
         <overwrite.binaries>false</overwrite.binaries>
-        <headless>true</headless>
+        <skipTests>false</skipTests>
     </properties>
 
 
@@ -75,7 +75,6 @@
                     <threadCount>${threads}</threadCount>
                     <systemProperties>
                         <browser>${browser}</browser>
-                        <headless>${headless}</headless>
                         <!--Set properties passed in by the driver binary downloader-->
                         <webdriver.chrome.driver>
                             src\\test\\resources\\selenium_standalone_binaries\\windows\\googlechrome\\64bit\\chromedriver.exe
@@ -86,10 +85,12 @@
                         <webdriver.edge.driver>
                             src\\test\\resources\\selenium_standalone_binaries\\windows\\edge\\64bit\\MicrosoftWebDriver.exe
                         </webdriver.edge.driver>
+                        <phantomjs.binary.path>src\\test\\resources\\selenium_standalone_binaries\\windows\\phantomjs.64bit\\phantomjs.exe</phantomjs.binary.path>
                     </systemProperties>
                     <includes>
                         <include>**/*WD.java</include>
                     </includes>
+                    <skipTests>${skipTests}</skipTests>
                 </configuration>
                 <executions>
                     <execution>
@@ -127,6 +128,13 @@
             <version>${testng.version}</version>
             <scope>test</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.codeborne/phantomjsdriver -->
+        <dependency>
+            <groupId>com.codeborne</groupId>
+            <artifactId>phantomjsdriver</artifactId>
+            <version>1.4.4</version>
+        </dependency>
+
 
 
     </dependencies>

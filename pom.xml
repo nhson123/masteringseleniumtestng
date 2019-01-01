@@ -3,29 +3,132 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com.masteringselenium.demo</groupId>
     <artifactId>mastering-selenium-testng</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+
+    <name>MasteringSeleniumTestNG</name>
+    <description>A basic Selenium POM file</description>
+    <url>http://www.masteringselenium.com</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <!-- Dependency versions -->
+        <selenium.version>3.141.5</selenium.version>
+        <testng.version>6.14.3</testng.version>
+        <!-- Plugin versions -->
+        <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
+        <maven-failsafe-plugin.version>3.0.0-M2</maven-failsafe-plugin.version>
+        <driver-binary-downloader-maven-plugin.version>1.0.17</driver-binary-downloader-maven-plugin.version>
+        <!-- Configurable variables -->
+        <threads>1</threads>
+        <browser>edge</browser>
+        <overwrite.binaries>false</overwrite.binaries>
+        <headless>true</headless>
+    </properties>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+                <version>${maven-compiler-plugin.version}</version>
+
+
+            </plugin>
+
+            <plugin>
+                <groupId>com.lazerycode.selenium</groupId>
+                <artifactId>driver-binary-downloader-maven-plugin</artifactId>
+                <version>${driver-binary-downloader-maven-plugin.version}</version>
+                <configuration>
+                    <rootStandaloneServerDirectory>${project.basedir}/src/test/resources/selenium_standalone_binaries
+                    </rootStandaloneServerDirectory>
+                    <downloadedZipFileDirectory>${project.basedir}/src/test/resources/selenium_standalone_zips
+                    </downloadedZipFileDirectory>
+                    <customRepositoryMap>${project.basedir}/src/test/resources/RepositoryMap.xml</customRepositoryMap>
+                    <overwriteFilesThatExist>${overwrite.binaries}</overwriteFilesThatExist>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>selenium</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>${maven-failsafe-plugin.version}</version>
+                <configuration>
+                    <parallel>methods</parallel>
+                    <threadCount>${threads}</threadCount>
+                    <systemProperties>
+                        <browser>${browser}</browser>
+                        <headless>${headless}</headless>
+                        <!--Set properties passed in by the driver binary downloader-->
+                        <webdriver.chrome.driver>
+                            src\\test\\resources\\selenium_standalone_binaries\\windows\\googlechrome\\64bit\\chromedriver.exe
+                        </webdriver.chrome.driver>
+                        <webdriver.gecko.driver>
+                            src\\test\resources\\selenium_standalone_binaries\\windows\\geko.64bit\\geckodriver.exe
+                        </webdriver.gecko.driver>
+                        <webdriver.edge.driver>
+                            src\\test\\resources\\selenium_standalone_binaries\\windows\\edge\\64bit\\MicrosoftWebDriver.exe
+                        </webdriver.edge.driver>
+                    </systemProperties>
+                    <includes>
+                        <include>**/*WD.java</include>
+                    </includes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+
+                </executions>
+            </plugin>
+        </plugins>
+
+
+    </build>
+
 
     <dependencies>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>3.14.0</version>
+            <version>${selenium.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-remote-driver</artifactId>
             <version>${selenium.version}</version>
+            <scope>test</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.testng/testng -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>6.8</version>
+            <version>${testng.version}</version>
             <scope>test</scope>
         </dependency>
+
+
     </dependencies>
 
 </project>

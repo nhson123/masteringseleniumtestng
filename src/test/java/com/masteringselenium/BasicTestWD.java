@@ -37,7 +37,7 @@ public class BasicTestWD extends DriverFactory{
         WebDriverWait wait = new WebDriverWait(driver, 10, 100);
         wait.until(pageTitleStartsWith(searchString));
 
-        System.out.println("Page title is: " + driver.getTitle());
+        System.out.println("the Page title is: " + driver.getTitle());
     }
 
     @Test

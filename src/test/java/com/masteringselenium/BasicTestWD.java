@@ -30,7 +30,7 @@ public class BasicTestWD extends DriverFactory{
         searchField.clear();
         searchField.sendKeys(searchString);
 
-        System.out.println("Page title is: " + driver.getTitle());
+        System.out.println("this Page title is: " + driver.getTitle());
 
         searchField.submit();
 

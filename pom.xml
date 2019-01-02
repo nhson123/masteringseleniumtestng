@@ -32,117 +32,123 @@
     </properties>
 
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                </configuration>
-                <version>${maven-compiler-plugin.version}</version>
+    <profiles>
+        <profile>
+            <id>selenium</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <configuration>
+                            <source>${java.version}</source>
+                            <target>${java.version}</target>
+                        </configuration>
+                        <version>${maven-compiler-plugin.version}</version>
 
 
-            </plugin>
+                    </plugin>
 
-            <plugin>
-                <groupId>com.lazerycode.selenium</groupId>
-                <artifactId>driver-binary-downloader-maven-plugin</artifactId>
-                <version>${driver-binary-downloader-maven-plugin.version}</version>
-                <configuration>
-                    <rootStandaloneServerDirectory>${project.basedir}/src/test/resources/selenium_standalone_binaries
-                    </rootStandaloneServerDirectory>
-                    <downloadedZipFileDirectory>${project.basedir}/src/test/resources/selenium_standalone_zips
-                    </downloadedZipFileDirectory>
-                    <customRepositoryMap>${project.basedir}/src/test/resources/RepositoryMap.xml</customRepositoryMap>
-                    <overwriteFilesThatExist>${overwrite.binaries}</overwriteFilesThatExist>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>selenium</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+                    <plugin>
+                        <groupId>com.lazerycode.selenium</groupId>
+                        <artifactId>driver-binary-downloader-maven-plugin</artifactId>
+                        <version>${driver-binary-downloader-maven-plugin.version}</version>
+                        <configuration>
+                            <rootStandaloneServerDirectory>
+                                ${project.basedir}/src/test/resources/selenium_standalone_binaries
+                            </rootStandaloneServerDirectory>
+                            <downloadedZipFileDirectory>${project.basedir}/src/test/resources/selenium_standalone_zips
+                            </downloadedZipFileDirectory>
+                            <customRepositoryMap>${project.basedir}/src/test/resources/RepositoryMap.xml
+                            </customRepositoryMap>
+                            <overwriteFilesThatExist>${overwrite.binaries}</overwriteFilesThatExist>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>selenium</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-failsafe-plugin</artifactId>
-                <version>${maven-failsafe-plugin.version}</version>
-                <configuration>
-                    <parallel>methods</parallel>
-                    <threadCount>${threads}</threadCount>
-                    <systemProperties>
-                        <browser>${browser}</browser>
-                        <!--Set properties passed in by the driver binary downloader-->
-                        <webdriver.chrome.driver>
-                            src\\test\\resources\\selenium_standalone_binaries\\windows\\googlechrome\\64bit\\chromedriver.exe
-                        </webdriver.chrome.driver>
-                        <webdriver.gecko.driver>
-                            src\\test\resources\\selenium_standalone_binaries\\windows\\geko.64bit\\geckodriver.exe
-                        </webdriver.gecko.driver>
-                        <webdriver.edge.driver>
-                            src\\test\\resources\\selenium_standalone_binaries\\windows\\edge\\64bit\\MicrosoftWebDriver.exe
-                        </webdriver.edge.driver>
-                        <webdriver.opera.driver>
-                            src\\test\\resources\\selenium_standalone_binaries\\windows\\operachromium\\64bit\\operadriver.exe
-                        </webdriver.opera.driver>
-                        <phantomjs.binary.path>
-                            src\\test\\resources\\selenium_standalone_binaries\\windows\\phantomjs\\64bit\\phantomjs.exe
-                        </phantomjs.binary.path>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-failsafe-plugin</artifactId>
+                        <version>${maven-failsafe-plugin.version}</version>
+                        <configuration>
+                            <parallel>methods</parallel>
+                            <threadCount>${threads}</threadCount>
+                            <systemProperties>
+                                <browser>${browser}</browser>
+                                <!--Set properties passed in by the driver binary downloader-->
+                                <webdriver.chrome.driver>
+                                    src\\test\\resources\\selenium_standalone_binaries\\windows\\googlechrome\\64bit\\chromedriver.exe
+                                </webdriver.chrome.driver>
+                                <webdriver.gecko.driver>
+                                    src\\test\resources\\selenium_standalone_binaries\\windows\\geko.64bit\\geckodriver.exe
+                                </webdriver.gecko.driver>
+                                <webdriver.edge.driver>
+                                    src\\test\\resources\\selenium_standalone_binaries\\windows\\edge\\64bit\\MicrosoftWebDriver.exe
+                                </webdriver.edge.driver>
+                                <webdriver.opera.driver>
+                                    src\\test\\resources\\selenium_standalone_binaries\\windows\\operachromium\\64bit\\operadriver.exe
+                                </webdriver.opera.driver>
+                                <phantomjs.binary.path>
+                                    src\\test\\resources\\selenium_standalone_binaries\\windows\\phantomjs\\64bit\\phantomjs.exe
+                                </phantomjs.binary.path>
 
-                    </systemProperties>
-                    <includes>
-                        <include>**/*WD.java</include>
-                    </includes>
-                    <skipTests>${skipTests}</skipTests>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>integration-test</goal>
-                            <goal>verify</goal>
-                        </goals>
-                    </execution>
+                            </systemProperties>
+                            <includes>
+                                <include>**/*WD.java</include>
+                            </includes>
+                            <skipTests>${skipTests}</skipTests>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>integration-test</goal>
+                                    <goal>verify</goal>
+                                </goals>
+                            </execution>
 
-                </executions>
-            </plugin>
-        </plugins>
-
-
-    </build>
-
-
-    <dependencies>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>${selenium.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-remote-driver</artifactId>
-            <version>${selenium.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.testng/testng -->
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>${testng.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/com.codeborne/phantomjsdriver -->
-        <dependency>
-            <groupId>com.codeborne</groupId>
-            <artifactId>phantomjsdriver</artifactId>
-            <version>1.4.4</version>
-        </dependency>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
 
 
-    </dependencies>
+            <dependencies>
+                <dependency>
+                    <groupId>org.seleniumhq.selenium</groupId>
+                    <artifactId>selenium-java</artifactId>
+                    <version>${selenium.version}</version>
+                    <scope>test</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.seleniumhq.selenium</groupId>
+                    <artifactId>selenium-remote-driver</artifactId>
+                    <version>${selenium.version}</version>
+                    <scope>test</scope>
+                </dependency>
+                <!-- https://mvnrepository.com/artifact/org.testng/testng -->
+                <dependency>
+                    <groupId>org.testng</groupId>
+                    <artifactId>testng</artifactId>
+                    <version>${testng.version}</version>
+                    <scope>test</scope>
+                </dependency>
+                <!-- https://mvnrepository.com/artifact/com.codeborne/phantomjsdriver -->
+                <dependency>
+                    <groupId>com.codeborne</groupId>
+                    <artifactId>phantomjsdriver</artifactId>
+                    <version>1.4.4</version>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
 
 </project>

@@ -32,6 +32,10 @@ public class LoginPageFactory {
     @FindBy(how = How.XPATH, using = "//button[@id='SubmitLogin']//span")
     private WebElement signInBtn;
 
+    @CacheLookup
+    @FindBy(how = How.XPATH, using = "//p[contains(text(),'There is 1 error')]")
+    private WebElement loginError;
+
     public boolean authenTextDisplay(){
         return authenText.isDisplayed();
     }
@@ -46,10 +50,20 @@ public class LoginPageFactory {
         pwd.sendKeys("son000");
         return this;
     }
+    public LoginPageFactory failLogin() throws Exception {
+        pwd.sendKeys("son000");
+        signInBtn.click();
+        return new LoginPageFactory();
+    }
     public LoggedPageFactory susseccLogin() throws Exception {
         email.sendKeys("son000@trash-mail.com");
         pwd.sendKeys("son000");
         signInBtn.click();
         return new LoggedPageFactory();
     }
+
+    public boolean loginErrorVisible(){
+        return loginError.isDisplayed();
+    }
+
 }

@@ -112,7 +112,7 @@
                                 <desiredBrowserVersion>${browserVersion}</desiredBrowserVersion>
 
                                 <!-- Screenshot directory -->
-                                <screenshotDirectory>${project.build.directory}/screenshots</screenshotDirectory>
+                                <screenshotDirectory>${project.build.directory}\\screenshots</screenshotDirectory>
 
                             </systemProperties>
                             <includes>

@@ -15,17 +15,42 @@ public class MainPageWD extends DriverFactory{
   public void checkMainPage() throws Exception {
     WebDriver driver = DriverFactory.getDriver();
     driver.navigate().to("http://automationpractice.com/index.php");
+    driver.manage().window().maximize();
     MainPageFactory mainPageFactory = new MainPageFactory();
     assertTrue(mainPageFactory.logoVisible());
+  }
+  @Test
+  public void failLogin()throws Exception{
+    WebDriver driver = DriverFactory.getDriver();
+    driver.navigate().to("http://automationpractice.com/index.php");
+    driver.manage().window().maximize();
+    MainPageFactory mainPageFactory = new MainPageFactory();
+    LoginPageFactory loginPageFactory = mainPageFactory.loginClick();
+    assertTrue(loginPageFactory.authenTextDisplay());
+    loginPageFactory = loginPageFactory.failLogin();
+    loginPageFactory.loginErrorVisible();
   }
   @Test
   public void checkLoginPage() throws Exception {
     WebDriver driver = DriverFactory.getDriver();
     driver.navigate().to("http://automationpractice.com/index.php");
+    driver.manage().window().maximize();
     MainPageFactory mainPageFactory = new MainPageFactory();
     LoginPageFactory loginPageFactory = mainPageFactory.loginClick();
     assertTrue(loginPageFactory.authenTextDisplay());
     LoggedPageFactory loggedPageFactory = loginPageFactory.susseccLogin();
     loggedPageFactory.logOutVisible();
+  }
+  @Test
+  public void checkMouseHover()throws Exception{
+    WebDriver driver = DriverFactory.getDriver();
+    driver.navigate().to("http://automationpractice.com/index.php");
+    driver.manage().window().maximize();
+    MainPageFactory mainPageFactory = new MainPageFactory();
+    LoginPageFactory loginPageFactory = mainPageFactory.loginClick();
+    assertTrue(loginPageFactory.authenTextDisplay());
+    LoggedPageFactory loggedPageFactory = loginPageFactory.susseccLogin();
+    loggedPageFactory = loggedPageFactory.womenClick();
+    loggedPageFactory.moveMouseToTshirt();
   }
 }

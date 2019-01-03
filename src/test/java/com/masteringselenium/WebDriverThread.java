@@ -16,7 +16,7 @@ public class WebDriverThread {
   private WebDriver webdriver;
   private DriverType selectedDriverType;
   private final DriverType defaultDriverType = CHROME;
-  private final String browser = System.getProperty("browser").toUpperCase();
+  //  private final String browser = System.getProperty("browser").toUpperCase();
   private final String operatingSystem = System.getProperty("os.name").toUpperCase();
   private final String systemArchitecture = System.getProperty("os.arch");
   private final boolean useRemoteWebDriver = Boolean.getBoolean("remoteDriver");
@@ -48,7 +48,7 @@ public class WebDriverThread {
       if (null != desiredBrowserVersion && !desiredBrowserVersion.isEmpty()) {
         desiredCapabilities.setVersion(desiredBrowserVersion);
       }
-      webdriver = new RemoteWebDriver(seleniumGridURL,desiredCapabilities);
+      webdriver = new RemoteWebDriver(seleniumGridURL, desiredCapabilities);
     } else {
       webdriver = selectedDriverType.getWebDriverObject(desiredCapabilities);
     }
@@ -57,12 +57,13 @@ public class WebDriverThread {
   private DriverType determineEffectiveDriverType() {
     DriverType driverType = defaultDriverType;
     try {
-      driverType = (DriverType) driverType.valueOf(browser);
+      if (System.getProperty("browser").toUpperCase() != null)
+        driverType = (DriverType) driverType.valueOf(System.getProperty("browser").toUpperCase());
     } catch (IllegalArgumentException ignored) {
       System.err.println(
-          "Unknown driver specified,              defaulting to '" + driverType + "'...");
+          "Unknown driver specified, defaulting to '" + driverType + "'...");
     } catch (NullPointerException ignored) {
-      System.err.println("No driver specified, defaulting              to '" + driverType + "'...");
+      System.err.println("No driver specified, defaulting to '" + driverType + "'...");
     }
     return driverType;
   }

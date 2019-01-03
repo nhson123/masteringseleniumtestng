@@ -1,0 +1,5 @@
+
+
+- Call RemoteWebdriver: mvn clean install -Dremote=true -DseleniumGridURL=http://son000:132d8ce7-4260-4c17-8367-9d2fc79afb72@ondemand.saucelabs.com:80/wd/hub -Dplatform=win10 -Dbrowser=chrome
+on Sauce labs: son000, nguyen000
+- PageFactory on http://automationpractice.com/index.php

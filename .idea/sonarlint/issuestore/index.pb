@@ -25,7 +25,9 @@ j
 :src/test/java/com/masteringselenium/config/DriverType.java,1\2\12fe380cb09adf8870d592b63b214071242f164f
 d
 4src/test/java/com/masteringselenium/BasicTestWD.java,8\7\87ce123099c9290160a2c5ccc8607290cf2c99ff
-w
-Gsrc/test/java/com/masteringselenium/checkDownloadLinks/RequestType.java,0\0\00f8a1c2507e8c8e3f6cd7e7c64de19070f9e470
 |
-Lsrc/test/java/com/masteringselenium/checkDownloadLinks/FileDownloaderWD.java,2\2\22f62409992ffec48ca2b3b91756f343ee187c1e
+Lsrc/test/java/com/masteringselenium/effectivePageObjects/FileDownloadWD.java,6\9\699e5bb0e3a7111e781b19214911fabfb2eba0a7
+O
+src/main/scripts/stopDocker.bat,a\1\a1a3da8b921852c6c17fabf8da0905e1748d4713
+P
+ src/main/scripts/startDocker.bat,f\3\f33b7afb3a7bda7565b5e232cadb64f337ffecc5

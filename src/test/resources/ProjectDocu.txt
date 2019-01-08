@@ -12,3 +12,6 @@ then check IP docker inspect <sonhub> | grep "IPAddress"
 and start the test:
 mvn clean install -Dremote=true -Dbrowser=firefox -DgridURL=http://127.17.0.2:4444/wd/hub
 mvn clean install -Dremote=true -Dbrowser=chrome -DgridURL=http://127.17.0.2:4444/wd/hub
+
+Selenium cookbook
+- ww.PacktPub.com

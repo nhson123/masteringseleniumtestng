@@ -1,11 +1,13 @@
 package com.masteringselenium.locators.factories;
 
 import com.masteringselenium.DriverFactory;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
@@ -15,7 +17,9 @@ import java.util.List;
  */
 public class MecuryHPFactory {
   public MecuryHPFactory() throws Exception {
-    PageFactory.initElements(DriverFactory.getDriver(), this);
+    WebDriver driver = DriverFactory.getDriver();
+    WebDriverWait wait = new WebDriverWait(driver, 15);
+    PageFactory.initElements(driver, this);
   }
   // Xpath by name
   @CacheLookup
@@ -38,9 +42,9 @@ public class MecuryHPFactory {
   // Xpath by CSS Sellector
   @CacheLookup
   @FindBy(
-      how = How.CSS,
+      how = How.XPATH,
       using =
-          "tbody:nth-child(1) tr:nth-child(2) td:nth-child(1) p:nth-child(1) > img:nth-child(1)")
+          "//img[@src='/images/nav/logo.gif']")
   WebElement logo;
 
   public boolean logoDisplayed() {

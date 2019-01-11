@@ -33,7 +33,7 @@ public class MecuryHPWD extends DriverFactory {
         "Logger Name: " + LOGGER.getName() + ", WebElements: " + mecuryHPFactory.countByTagName());
     assertTrue(mecuryHPFactory.countByTagName() >= 1);
     assertTrue(mecuryHPFactory.logoDisplayed());
-    assertEquals(mecuryHPFactory.mouseOutSize(),11);
+    assertTrue(mecuryHPFactory.mouseOutSize()<12);
     assertTrue(mecuryHPFactory.htmlVerDisplay());
     assertTrue(mecuryHPFactory.bannerDisplay());
     assertTrue(mecuryHPFactory.destinationsDisplay());

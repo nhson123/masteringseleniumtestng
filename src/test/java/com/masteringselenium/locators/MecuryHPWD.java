@@ -34,5 +34,15 @@ public class MecuryHPWD extends DriverFactory {
     assertTrue(mecuryHPFactory.countByTagName() >= 1);
     assertTrue(mecuryHPFactory.logoDisplayed());
     assertEquals(mecuryHPFactory.mouseOutSize(),11);
+    assertTrue(mecuryHPFactory.htmlVerDisplay());
+    assertTrue(mecuryHPFactory.bannerDisplay());
+    assertTrue(mecuryHPFactory.destinationsDisplay());
+    assertTrue(mecuryHPFactory.contactDisplay());
+    assertTrue(mecuryHPFactory.lasVegasDisplay());
+    assertTrue(mecuryHPFactory.registerDisplay());
+    assertTrue(mecuryHPFactory.linksDisplay());
+    assertTrue(mecuryHPFactory.rightPaneDisplay());
+    assertTrue(mecuryHPFactory.toChicagoDisplay());
+    assertTrue(mecuryHPFactory.sanfransiscoDisplay());
   }
 }

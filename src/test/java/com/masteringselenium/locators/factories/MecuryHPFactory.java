@@ -7,6 +7,8 @@ import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
@@ -16,10 +18,15 @@ import java.util.List;
  * 08.01.2019 2019
  */
 public class MecuryHPFactory {
+  WebDriver driver;
+
   public MecuryHPFactory() throws Exception {
-    WebDriver driver = DriverFactory.getDriver();
+    driver = DriverFactory.getDriver();
+    // we waits 15 second befort raise a NoSuchElement Error
     WebDriverWait wait = new WebDriverWait(driver, 15);
-    PageFactory.initElements(driver, this);
+    // We are going to use “AjaxElementLocatorFactory ” here to wait for the elements to be
+    // visible/load
+    PageFactory.initElements(new AjaxElementLocatorFactory(driver, 15), this);
   }
   // Xpath by name
   @CacheLookup
@@ -36,19 +43,20 @@ public class MecuryHPFactory {
   WebElement pwd;
 
   public boolean pwdSisplaed() {
-    return pwd.isDisplayed();
+    return new WebDriverWait(driver, 10)
+        .until(ExpectedConditions.visibilityOf((pwd)))
+        .isDisplayed();
   }
 
   // Xpath by CSS Sellector
   @CacheLookup
-  @FindBy(
-      how = How.XPATH,
-      using =
-          "//img[@src='/images/nav/logo.gif']")
+  @FindBy(how = How.XPATH, using = "//img[@src='/images/nav/logo.gif']")
   WebElement logo;
 
   public boolean logoDisplayed() {
-    return logo.isDisplayed();
+    return new WebDriverWait(driver, 10)
+        .until(ExpectedConditions.visibilityOf((logo)))
+        .isDisplayed();
   }
 
   // Css by class of Element
@@ -89,7 +97,9 @@ public class MecuryHPFactory {
   WebElement destinations;
 
   public boolean destinationsDisplay() {
-    return destinations.isDisplayed();
+    return new WebDriverWait(driver, 10)
+        .until(ExpectedConditions.visibilityOf((destinations)))
+        .isDisplayed();
   }
 
   // Xpath by many Attribute with * an containt text
@@ -142,8 +152,8 @@ public class MecuryHPFactory {
   // locate element through sibling, next sibling
   @CacheLookup
   @FindBy(
-          how = How.XPATH,
-          using = "//td//td//td[@width='273']//tbody//tbody//tr[3]//following-sibling::tr")
+      how = How.XPATH,
+      using = "//td//td//td[@width='273']//tbody//tbody//tr[3]//following-sibling::tr")
   WebElement toChicago;
 
   public boolean toChicagoDisplay() {
@@ -153,8 +163,8 @@ public class MecuryHPFactory {
   // locate element through sibling, preceding sibling
   @CacheLookup
   @FindBy(
-          how = How.XPATH,
-          using = "//td//td//td[@width='273']//tbody//tbody//tr[4]/preceding-sibling::tr")
+      how = How.XPATH,
+      using = "//td//td//td[@width='273']//tbody//tbody//tr[4]/preceding-sibling::tr")
   WebElement sanfransisco;
 
   public boolean sanfransiscoDisplay() {

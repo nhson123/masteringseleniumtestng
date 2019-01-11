@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -28,6 +29,7 @@ public class MecuryHPWD extends DriverFactory {
   @Test
   public void MerucyHPCheck() throws Exception {
     driver.navigate().to("http://newtours.demoaut.com");
+    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     mecuryHPFactory = new MecuryHPFactory();
     LOGGER.info(
         "Logger Name: " + LOGGER.getName() + ", WebElements: " + mecuryHPFactory.countByTagName());

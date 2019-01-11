@@ -67,7 +67,7 @@ public class WebDriverThread {
     }
     return driverType;
   }
-
+//wuit just a driver
   public void quitDriver() {
     if (null != webdriver) {
       webdriver.quit();

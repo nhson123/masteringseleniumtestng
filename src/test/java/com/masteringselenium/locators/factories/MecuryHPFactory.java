@@ -40,7 +40,7 @@ public class MecuryHPFactory {
   @FindBy(
       how = How.CSS,
       using =
-          "tbody:nth-child(1) tr:nth-child(1) td:nth-child(1) p:nth-child(1) > img:nth-child(1)")
+          "tbody:nth-child(1) tr:nth-child(2) td:nth-child(1) p:nth-child(1) > img:nth-child(1)")
   WebElement logo;
 
   public boolean logoDisplayed() {

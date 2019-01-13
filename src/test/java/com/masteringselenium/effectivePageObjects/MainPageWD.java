@@ -23,6 +23,7 @@ import static org.testng.Assert.*;
 public class MainPageWD extends DriverFactory {
 
   private Logger LOGGER = Logger.getLogger(this.getClass().getName());
+
   @Test
   public void checkMainPage() throws Exception {
     WebDriver driver = DriverFactory.getDriver();
@@ -90,17 +91,17 @@ public class MainPageWD extends DriverFactory {
     return (Boolean) js.executeScript("return typeof jQuery != 'undefined';");
   }
 
-  //inspect if a web run call JQuery
+  // inspect if a web run call JQuery
   /*
-  @Test
-  public void injectjQueryIntoGoogle() throws Exception {
-    WebDriver driver = DriverFactory.getDriver();
-    driver.get("http://www.google.com");
-    driver.manage().timeouts().implicitlyWait(3,TimeUnit.SECONDS);
-    assertFalse(isjQueryLoaded());
-  }
+    @Test
+    public void injectjQueryIntoGoogle() throws Exception {
+      WebDriver driver = DriverFactory.getDriver();
+      driver.get("http://www.google.com");
+      driver.manage().timeouts().implicitlyWait(3,TimeUnit.SECONDS);
+      assertFalse(isjQueryLoaded());
+    }
 
-
+  */
 
   @Test
   public void MerucyHPCheck() throws Exception {
@@ -109,10 +110,10 @@ public class MainPageWD extends DriverFactory {
     driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     MercuryHPFactory mecuryHPFactory = new MercuryHPFactory();
     LOGGER.info(
-            "Logger Name: " + LOGGER.getName() + ", WebElements: " + mecuryHPFactory.countByTagName());
+        "Logger Name: " + LOGGER.getName() + ", WebElements: " + mecuryHPFactory.countByTagName());
     assertTrue(mecuryHPFactory.countByTagName() >= 1);
     assertTrue(mecuryHPFactory.logoDisplayed());
-    assertTrue(mecuryHPFactory.mouseOutSize()<12);
+    assertTrue(mecuryHPFactory.mouseOutSize() < 12);
     assertTrue(mecuryHPFactory.htmlVerDisplay());
     assertTrue(mecuryHPFactory.bannerDisplay());
     assertTrue(mecuryHPFactory.destinationsDisplay());
@@ -127,7 +128,6 @@ public class MainPageWD extends DriverFactory {
     System.out.println("Mercury Check");
   }
 
-
   @Test
   public void MerucyReservationCheck() throws Exception {
     WebDriver driver = DriverFactory.getDriver();
@@ -135,13 +135,12 @@ public class MainPageWD extends DriverFactory {
     MercuryHPFactory mercuryHPFactory = new MercuryHPFactory();
     mercuryHPFactory.login();
     MercuryReservationFactory mercuryReservationFactory = new MercuryReservationFactory();
-    //Test
+    // Test
     assertTrue(mercuryReservationFactory.flightFinderDisplayed());
     assertTrue(mercuryReservationFactory.oneWaySelected());
 
     System.out.println("Mercury Reservation Check");
 
-    //assertTrue(WindowsUtils.thisIsWindows());
+    // assertTrue(WindowsUtils.thisIsWindows());
   }
-*/
 }

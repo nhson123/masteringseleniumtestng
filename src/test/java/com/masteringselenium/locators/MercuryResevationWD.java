@@ -17,27 +17,23 @@ import static org.testng.Assert.assertTrue;
  * Generated at: 13.01.2019 2019
  */
 public class MercuryResevationWD extends DriverFactory {
-    private Logger LOGGER;
-    MercuryReservationFactory mercuryReservationFactory;
+    private Logger  LOGGER = Logger.getLogger(this.getClass().getName());
     WebDriver driver;
 
-    @BeforeMethod
-    public void setUp() throws Exception {
-        LOGGER = Logger.getLogger(this.getClass().getName());
-        driver = DriverFactory.getDriver();
-    }
+
 
     @Test
     public void MerucyReservationCheck() throws Exception {
+        driver = DriverFactory.getDriver();
         driver.navigate().to("http://newtours.demoaut.com/");
         MercuryHPFactory mercuryHPFactory = new MercuryHPFactory();
         mercuryHPFactory.login();
-        mercuryReservationFactory = new MercuryReservationFactory();
+        MercuryReservationFactory mercuryReservationFactory = new MercuryReservationFactory();
         //Test
         assertTrue(mercuryReservationFactory.flightFinderDisplayed());
         assertTrue(mercuryReservationFactory.oneWaySelected());
 
-        assertTrue(WindowsUtils.thisIsWindows());
+       //assertTrue(WindowsUtils.thisIsWindows());
         }
     }
 

@@ -1,11 +1,14 @@
 package com.masteringselenium.effectivePageObjects;
 
 import com.masteringselenium.DriverFactory;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * Package: com.masteringselenium.effectivePageObjects
@@ -13,8 +16,10 @@ import org.openqa.selenium.support.PageFactory;
  * Generated at: 03.01.2019 2019
  */
 public class LoginPageFactory {
+    WebDriver driver = DriverFactory.getDriver();
     LoginPageFactory() throws Exception {
-        PageFactory.initElements(DriverFactory.getDriver(),this);
+
+        PageFactory.initElements(driver,this);
     }
     @CacheLookup
     @FindBy(how = How.XPATH, using = "//h1[@class='page-heading']")
@@ -37,7 +42,9 @@ public class LoginPageFactory {
     private WebElement loginError;
 
     public boolean authenTextDisplay(){
-        return authenText.isDisplayed();
+        return new WebDriverWait(driver, 10)
+                .until(ExpectedConditions.visibilityOf((authenText)))
+                .isDisplayed();
     }
     public boolean signInClickable(){
         return signInBtn.isEnabled();

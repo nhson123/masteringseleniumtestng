@@ -215,6 +215,8 @@ public class MercuryHPFactory {
   public void login() {
     user.sendKeys("tutorial");
     pwd.sendKeys("tutorial");
+    signIn.click();
+    /*
     (new WebDriverWait(driver, 5)) // wait max 5 sec. till sign in found
             .until(
                     new ExpectedCondition<WebElement>() {
@@ -223,6 +225,7 @@ public class MercuryHPFactory {
                         return signIn;
                       }
                     }).click();
+                    */
   }
 
 }

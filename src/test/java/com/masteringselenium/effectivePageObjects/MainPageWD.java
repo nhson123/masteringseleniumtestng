@@ -1,6 +1,8 @@
 package com.masteringselenium.effectivePageObjects;
 
 import com.masteringselenium.DriverFactory;
+import com.masteringselenium.locators.factories.MercuryHPFactory;
+import com.masteringselenium.locators.factories.MercuryReservationFactory;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -9,6 +11,9 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Logger;
+
 import static org.testng.Assert.*;
 
 /**
@@ -16,6 +21,8 @@ import static org.testng.Assert.*;
  * 03.01.2019 2019
  */
 public class MainPageWD extends DriverFactory {
+
+  private Logger LOGGER = Logger.getLogger(this.getClass().getName());
   @Test
   public void checkMainPage() throws Exception {
     WebDriver driver = DriverFactory.getDriver();
@@ -84,12 +91,57 @@ public class MainPageWD extends DriverFactory {
   }
 
   //inspect if a web run call JQuery
+  /*
   @Test
   public void injectjQueryIntoGoogle() throws Exception {
     WebDriver driver = DriverFactory.getDriver();
     driver.get("http://www.google.com");
+    driver.manage().timeouts().implicitlyWait(3,TimeUnit.SECONDS);
     assertFalse(isjQueryLoaded());
   }
 
 
+
+  @Test
+  public void MerucyHPCheck() throws Exception {
+    WebDriver driver = DriverFactory.getDriver();
+    driver.navigate().to("http://newtours.demoaut.com");
+    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    MercuryHPFactory mecuryHPFactory = new MercuryHPFactory();
+    LOGGER.info(
+            "Logger Name: " + LOGGER.getName() + ", WebElements: " + mecuryHPFactory.countByTagName());
+    assertTrue(mecuryHPFactory.countByTagName() >= 1);
+    assertTrue(mecuryHPFactory.logoDisplayed());
+    assertTrue(mecuryHPFactory.mouseOutSize()<12);
+    assertTrue(mecuryHPFactory.htmlVerDisplay());
+    assertTrue(mecuryHPFactory.bannerDisplay());
+    assertTrue(mecuryHPFactory.destinationsDisplay());
+    assertTrue(mecuryHPFactory.contactDisplay());
+    assertTrue(mecuryHPFactory.lasVegasDisplay());
+    assertTrue(mecuryHPFactory.registerDisplay());
+    assertTrue(mecuryHPFactory.linksDisplay());
+    assertTrue(mecuryHPFactory.rightPaneDisplay());
+    assertTrue(mecuryHPFactory.toChicagoDisplay());
+    assertTrue(mecuryHPFactory.sanfransiscoDisplay());
+    mecuryHPFactory.setSanfransiscoDoubleClick();
+    System.out.println("Mercury Check");
+  }
+
+
+  @Test
+  public void MerucyReservationCheck() throws Exception {
+    WebDriver driver = DriverFactory.getDriver();
+    driver.navigate().to("http://newtours.demoaut.com/");
+    MercuryHPFactory mercuryHPFactory = new MercuryHPFactory();
+    mercuryHPFactory.login();
+    MercuryReservationFactory mercuryReservationFactory = new MercuryReservationFactory();
+    //Test
+    assertTrue(mercuryReservationFactory.flightFinderDisplayed());
+    assertTrue(mercuryReservationFactory.oneWaySelected());
+
+    System.out.println("Mercury Reservation Check");
+
+    //assertTrue(WindowsUtils.thisIsWindows());
+  }
+*/
 }

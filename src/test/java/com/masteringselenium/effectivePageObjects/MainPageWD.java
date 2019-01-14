@@ -7,8 +7,10 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
@@ -101,8 +103,6 @@ public class MainPageWD extends DriverFactory {
       assertFalse(isjQueryLoaded());
     }
 
-
-
   @Test
   public void MerucyHPCheck() throws Exception {
     WebDriver driver = DriverFactory.getDriver();
@@ -145,4 +145,5 @@ public class MainPageWD extends DriverFactory {
 
   }
   */
+
 }

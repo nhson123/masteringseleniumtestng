@@ -177,8 +177,8 @@ public class WindowsUtils {
      *
      * @return true if the current OS is MS Windows; false otherwise
      */
-    //public static boolean thisIsWindows() {
-      //  return THIS_IS_WINDOWS;
-    //}
+    public static boolean thisIsWindows() {
+       return THIS_IS_WINDOWS;
+    }
 
 }

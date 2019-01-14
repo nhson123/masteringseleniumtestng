@@ -33,7 +33,3 @@ P
  src/main/scripts/startDocker.bat,f\3\f33b7afb3a7bda7565b5e232cadb64f337ffecc5
 K
 masteringseleniumtestng.iml,e\e\ee7678d0afae2a8d88ddcc7da93cfcf36af85e12
-l
-<src/test/java/com/masteringselenium/locators/MecuryHPWD.java,1\a\1a83583b23dee2b3061e88b2bada36be3c748d3c
-{
-Ksrc/test/java/com/masteringselenium/locators/factories/MecuryHPFactory.java,d\4\d4f012fc5d7457fe2a57f7b81f0584346b4e1370

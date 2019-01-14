@@ -101,7 +101,7 @@ public class MainPageWD extends DriverFactory {
       assertFalse(isjQueryLoaded());
     }
 
-  */
+
 
   @Test
   public void MerucyHPCheck() throws Exception {
@@ -142,5 +142,7 @@ public class MainPageWD extends DriverFactory {
     System.out.println("Mercury Reservation Check");
 
     // assertTrue(WindowsUtils.thisIsWindows());
+
   }
+  */
 }

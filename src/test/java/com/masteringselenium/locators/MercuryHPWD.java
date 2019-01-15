@@ -2,6 +2,7 @@ package com.masteringselenium.locators;
 
 import com.masteringselenium.DriverFactory;
 import com.masteringselenium.locators.factories.MercuryHPFactory;
+import com.masteringselenium.locators.factories.MercuryReservationFactory;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.testng.annotations.BeforeMethod;
@@ -67,6 +68,8 @@ public class MercuryHPWD extends DriverFactory {
     loginTable.setCellEditor(2,2,0,"tutorial");
     loginTable.setCellEditor(3,2,0,"tutorial");
     mecuryHPFactory.signInClick();
+    MercuryReservationFactory mercuryReservationFactory = new MercuryReservationFactory();
+    mercuryReservationFactory.flightFinderDisplayed();
     assertTrue(driver.getTitle().contains("Find a Flight: Mercury Tours:"));
   }
 

@@ -77,10 +77,11 @@ public class MercuryHPFactory {
   List<WebElement> mouseOut;
 
   public int mouseOutSize() {
-    for (WebElement e : mouseOut) {
+    List<WebElement> mouseOutTemp = mouseOut;
+    for (WebElement e : mouseOutTemp) {
       System.out.println(e.getAttribute("onmouseout"));
     }
-    return mouseOut.size();
+    return mouseOutTemp.size();
   }
 
   // CSS using any Attribute
@@ -202,17 +203,14 @@ public class MercuryHPFactory {
   }
 
   @CacheLookup
-  @FindBy(
-          how = How.XPATH,
-          using = "//input[@name='userName']")
+  @FindBy(how = How.XPATH, using = "//input[@name='userName']")
   WebElement user;
 
   @CacheLookup
-  @FindBy(
-          how = How.XPATH,
-          using = "//input[@value='Login']")
+  @FindBy(how = How.XPATH, using = "//input[@value='Login']")
   WebElement signIn;
-  public void signInClick(){
+
+  public void signInClick() {
     signIn.click();
   }
 
@@ -232,12 +230,8 @@ public class MercuryHPFactory {
                     }).click();
                     */
   }
+
   @CacheLookup
-  @FindBy(
-          how = How.XPATH,
-          using = "//td//td//tbody//tr[4]//td[1]//table[1]")
+  @FindBy(how = How.XPATH, using = "//td//td//tbody//tr[4]//td[1]//table[1]")
   public WebElement loginTable;
-
-
-
 }

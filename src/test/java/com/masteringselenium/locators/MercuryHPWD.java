@@ -57,4 +57,17 @@ public class MercuryHPWD extends DriverFactory {
     }
   }
 
+  @Test
+  public void tableLogin() throws Exception {
+    driver = DriverFactory.getDriver();
+    driver.navigate().to("http://newtours.demoaut.com");
+    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    mecuryHPFactory = new MercuryHPFactory();
+    WebTable loginTable = new WebTable(mecuryHPFactory.loginTable);
+    loginTable.setCellEditor(2,2,0,"tutorial");
+    loginTable.setCellEditor(3,2,0,"tutorial");
+    mecuryHPFactory.signInClick();
+    assertTrue(driver.getTitle().contains("Find a Flight: Mercury Tours:"));
+  }
+
 }

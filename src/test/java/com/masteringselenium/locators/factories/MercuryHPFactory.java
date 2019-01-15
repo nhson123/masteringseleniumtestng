@@ -1,6 +1,7 @@
 package com.masteringselenium.locators.factories;
 
 import com.masteringselenium.DriverFactory;
+import com.masteringselenium.locators.WebTable;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -211,11 +212,15 @@ public class MercuryHPFactory {
           how = How.XPATH,
           using = "//input[@value='Login']")
   WebElement signIn;
+  public void signInClick(){
+    signIn.click();
+  }
 
   public void login() {
     user.sendKeys("tutorial");
     pwd.sendKeys("tutorial");
     signIn.click();
+
     /*
     (new WebDriverWait(driver, 5)) // wait max 5 sec. till sign in found
             .until(
@@ -227,5 +232,12 @@ public class MercuryHPFactory {
                     }).click();
                     */
   }
+  @CacheLookup
+  @FindBy(
+          how = How.XPATH,
+          using = "//td//td//tbody//tr[4]//td[1]//table[1]")
+  public WebElement loginTable;
+
+
 
 }

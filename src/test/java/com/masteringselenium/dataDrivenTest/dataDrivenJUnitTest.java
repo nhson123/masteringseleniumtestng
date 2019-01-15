@@ -1,4 +1,4 @@
-package com.masteringselenium.junitTest;
+package com.masteringselenium.dataDrivenTest;
 
 import org.junit.After;
 import org.junit.Assert;

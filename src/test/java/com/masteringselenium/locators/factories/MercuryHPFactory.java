@@ -70,6 +70,9 @@ public class MercuryHPFactory {
         .until(ExpectedConditions.visibilityOf((logo)))
         .isDisplayed();
   }
+  public void highlight() throws InterruptedException {
+      WebelementExtender.highlightElement(lasVegas,driver);
+  }
 
   // Css by class of Element
   @CacheLookup
@@ -77,11 +80,7 @@ public class MercuryHPFactory {
   List<WebElement> mouseOut;
 
   public int mouseOutSize() {
-    List<WebElement> mouseOutTemp = mouseOut;
-    for (WebElement e : mouseOutTemp) {
-      System.out.println(e.getAttribute("onmouseout"));
-    }
-    return mouseOutTemp.size();
+    return mouseOut.size();
   }
 
   // CSS using any Attribute

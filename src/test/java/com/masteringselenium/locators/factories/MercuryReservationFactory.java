@@ -34,7 +34,7 @@ public class MercuryReservationFactory {
   private WebElement flightFinder;
 
   public boolean flightFinderDisplayed() {
-    return new WebDriverWait(driver, 10)
+    return new WebDriverWait(driver, 30)
         .until(ExpectedConditions.visibilityOf((flightFinder)))
         .isDisplayed();
   }

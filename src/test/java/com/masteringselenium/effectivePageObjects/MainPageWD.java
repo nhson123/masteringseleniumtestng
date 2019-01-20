@@ -1,19 +1,10 @@
 package com.masteringselenium.effectivePageObjects;
 
 import com.masteringselenium.DriverFactory;
-import com.masteringselenium.locators.factories.MercuryHPFactory;
-import com.masteringselenium.locators.factories.MercuryReservationFactory;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.testng.annotations.Test;
 
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
 import static org.testng.Assert.*;

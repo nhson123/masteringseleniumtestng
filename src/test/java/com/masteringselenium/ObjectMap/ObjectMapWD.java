@@ -68,7 +68,7 @@ public class ObjectMapWD extends DriverFactory {
                             ExpectedConditions.elementToBeClickable(map.getLocator("calButton")));
             calc.click();
         } catch (TimeoutException ex) {
-            Assert.fail("Not loaded");
+            verificationErrors.append(ex.toString()+"\n");
         }
 
         try {

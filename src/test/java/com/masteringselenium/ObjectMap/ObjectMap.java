@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.sql.SQLOutput;
 import java.util.Properties;
 import java.util.logging.Logger;
 
@@ -34,20 +33,31 @@ public class ObjectMap {
     String locatorType = locator.split(">")[0];
     String locatorValue = locator.split(">")[1];
 
-    // return instance of By class based type of locator
-    if (locatorType.toLowerCase().equals("id")) {
-        System.out.println(By.id(locatorValue).toString());
-      return By.id(locatorValue);
-    } else if (locatorType.toLowerCase().equals("name")) return By.name(locatorValue);
-    else if ((locatorType.toLowerCase().equals("classname"))
-        || (locatorType.toLowerCase().equals("class"))) return By.className(locatorValue);
-    else if ((locatorType.toLowerCase().equals("tagname"))
-        || (locatorType.toLowerCase().equals("tag"))) return By.className(locatorValue);
-    else if ((locatorType.toLowerCase().equals("linktext"))
-        || (locatorType.toLowerCase().equals("link"))) return By.linkText(locatorValue);
-    else if ((locatorType.toLowerCase().equals("cssselector"))
-        || (locatorType.toLowerCase().equals("css"))) return By.cssSelector(locatorValue);
-    else if (locatorType.toLowerCase().equals("xpath")) return By.xpath(locatorValue);
-    else throw new Exception("Locator type '" + locatorType + "' not defined!!");
+    switch (locatorType.toLowerCase()) {
+      case "id":
+        return By.id(locatorValue);
+      case "name":
+        return By.name(locatorValue);
+      case "class":
+        return By.className(locatorValue);
+      case "classname":
+        return By.className(locatorValue);
+      case "tag":
+        return By.tagName(locatorValue);
+      case "tagname":
+        return By.tagName(locatorValue);
+      case "link":
+        return By.linkText(locatorValue);
+      case "linktext":
+        return By.linkText(locatorValue);
+      case "cssselector":
+        return By.cssSelector(locatorValue);
+      case "xpath":
+        return By.xpath(locatorValue);
+      case "partiallinktext":
+        return By.partialLinkText(locatorValue);
+      default:
+        throw new Exception("Locator type '" + locatorType + "' not defined!!");
+    }
   }
 }

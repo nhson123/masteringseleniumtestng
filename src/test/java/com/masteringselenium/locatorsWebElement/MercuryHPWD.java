@@ -1,11 +1,10 @@
-package com.masteringselenium.locators;
+package com.masteringselenium.locatorsWebElement;
 
 import com.masteringselenium.DriverFactory;
-import com.masteringselenium.locators.factories.MercuryHPFactory;
-import com.masteringselenium.locators.factories.MercuryReservationFactory;
+import com.masteringselenium.locatorsWebElement.factories.MercuryHPFactory;
+import com.masteringselenium.locatorsWebElement.factories.MercuryReservationFactory;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.Test;
 
 import java.io.File;

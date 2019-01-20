@@ -1,10 +1,9 @@
-package com.masteringselenium.locators;
+package com.masteringselenium.locatorsWebElement;
 
 import com.masteringselenium.DriverFactory;
-import com.masteringselenium.locators.factories.MercuryHPFactory;
-import com.masteringselenium.locators.factories.MercuryReservationFactory;
+import com.masteringselenium.locatorsWebElement.factories.MercuryHPFactory;
+import com.masteringselenium.locatorsWebElement.factories.MercuryReservationFactory;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.logging.Logger;

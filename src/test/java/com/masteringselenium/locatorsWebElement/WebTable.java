@@ -1,4 +1,4 @@
-package com.masteringselenium.locators;
+package com.masteringselenium.locatorsWebElement;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;

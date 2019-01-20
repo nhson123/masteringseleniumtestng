@@ -1,6 +1,6 @@
 package com.masteringselenium;
 
-import com.masteringselenium.listeners.ScreenshotListener;
+import com.masteringselenium.listenersScreenshot.ScreenshotListener;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;

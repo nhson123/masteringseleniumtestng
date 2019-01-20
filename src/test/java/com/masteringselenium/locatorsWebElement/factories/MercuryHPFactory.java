@@ -1,10 +1,6 @@
-package com.masteringselenium.locators.factories;
+package com.masteringselenium.locatorsWebElement.factories;
 
 import com.masteringselenium.DriverFactory;
-import com.masteringselenium.locators.WebTable;
-import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -14,10 +10,7 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.ui.*;
-import org.testng.annotations.Test;
-import org.testng.internal.Utils;
 
-import java.io.File;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.function.Function;

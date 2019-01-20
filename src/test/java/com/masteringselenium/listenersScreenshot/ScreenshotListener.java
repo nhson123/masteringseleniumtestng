@@ -1,4 +1,4 @@
-package com.masteringselenium.listeners;
+package com.masteringselenium.listenersScreenshot;
 
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -10,6 +10,7 @@ import org.testng.TestListenerAdapter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.logging.Logger;
 
 import static com.masteringselenium.DriverFactory.getDriver;
 
@@ -18,6 +19,7 @@ import static com.masteringselenium.DriverFactory.getDriver;
  * 2019
  */
 public class ScreenshotListener extends TestListenerAdapter {
+  Logger LOGGER = Logger.getLogger("Error screen shot: ");
   private boolean createFile(File screenshot) throws IOException {
     boolean fileCreated = false;
     if (screenshot.exists()) {
@@ -56,13 +58,13 @@ public class ScreenshotListener extends TestListenerAdapter {
         } catch (ClassCastException weNeedToAugmentOurDriverObject) {
           writeScreenshotToFile(new Augmenter().augment(driver), screenshot);
         }
-        System.out.println("Written screenshot to " + screenshotAbsolutePath);
+        LOGGER.warning("Written screenshot to " + screenshotAbsolutePath);
       } else {
-        System.err.println("Unable to create " + screenshotAbsolutePath);
+          LOGGER.warning("Unable to create " + screenshotAbsolutePath);
       }
 
     } catch (Exception ex) {
-      System.err.println("Unable to capture screenshot...");
+      LOGGER.warning("Unable to capture screenshot...");
       ex.printStackTrace();
     }
   }

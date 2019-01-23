@@ -1,8 +1,16 @@
 package com.masteringselenium.selenide;
 
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.SelenideDriver;
+import com.masteringselenium.DriverFactory;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -12,9 +20,18 @@ import static com.codeborne.selenide.Selenide.open;
  * Generated at: 18.01.2019 2019
  */
 public class GoogleTestWD {
+    SelenideDriver selenideDriver;
+    @BeforeTest
+    public void setUp() throws Exception {
+        //selenideDriver= (SelenideDriver) DriverFactory.getDriver();
+    }
     @Test
     public void search_selenide_google() throws InterruptedException {
         open("http://google.com");
+        $("#hplogo").should(Condition.exist);
+        $(".hb2Smf").shouldBe(Condition.visible);
+        $(By.xpath("//div[@class='FPdoLc VlcLAe']//input[@value='Auf gut Glück!']")).shouldBe(enabled);
         $(By.name("q")).val("selenide").pressEnter();
+
     }
 }

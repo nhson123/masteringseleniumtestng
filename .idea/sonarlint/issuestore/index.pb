@@ -7,8 +7,6 @@ k
 ;src/test/java/com/masteringselenium/config/DriverSetup.java,a\9\a97768dd8d1e63bf02ed4d8a3924f2b5761aaad3
 }
 Msrc/test/java/com/masteringselenium/effectivePageObjects/MainPageFactory.java,0\1\0120b1486f8d6a75e1d04284568882b3dc135911
-u
-Esrc/test/java/com/masteringselenium/listeners/ScreenshotListener.java,6\b\6bb5719c36d802c68a147fada779a12b4c233fc1
 R
 "src/test/resources/ProjectDocu.txt,d\8\d8bd19892d492ba9f21ab9b428f78e0286b2c252
 ~
@@ -33,21 +31,9 @@ P
  src/main/scripts/startDocker.bat,f\3\f33b7afb3a7bda7565b5e232cadb64f337ffecc5
 K
 masteringseleniumtestng.iml,e\e\ee7678d0afae2a8d88ddcc7da93cfcf36af85e12
-u
-Esrc/test/java/com/masteringselenium/locators/MercuryResevationWD.java,8\1\816364b487a1992615ab3de6959e903b6136c7e4
-n
->src/test/java/com/masteringselenium/locators/WindowsUtils.java,3\7\3790d0e167b07b3b5caf80b06f93fbb1cbd4f0bb
 ;
 Jenkinsfile,0\c\0c2c5c506cef0ed2d3ad2b7e45e97980b66f5520
 {
 Ksrc/test/java/com/masteringselenium/dataDrivenTest/dataDrivenJUnitTest.java,9\c\9cfca02f0a271e945d852f7c678860ec7d3bf694
 z
 Jsrc/test/java/com/masteringselenium/dataDrivenTest/dataDrivenTestNGWD.java,b\5\b5f7b3e3433e4ddbcd113610920d67aa305bb862
-j
-:src/test/java/com/masteringselenium/locators/WebTable.java,9\e\9e1ff12be1c20753a9e02578cc8003b9d8ed140e
-…
-Usrc/test/java/com/masteringselenium/locators/factories/MercuryReservationFactory.java,f\a\fa4fbc945109e875dfe27343367669a6125cc18f
-|
-Lsrc/test/java/com/masteringselenium/locators/factories/MercuryHPFactory.java,f\a\fa4dc4397602c7572fc25fab903641657c8eebdf
-m
-=src/test/java/com/masteringselenium/locators/MercuryHPWD.java,7\2\72777e68ad8f43b38405d25326a11521ea9222e8

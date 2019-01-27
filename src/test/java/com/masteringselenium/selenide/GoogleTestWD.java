@@ -20,11 +20,7 @@ import static com.codeborne.selenide.Selenide.open;
  * Generated at: 18.01.2019 2019
  */
 public class GoogleTestWD {
-    SelenideDriver selenideDriver;
-    @BeforeTest
-    public void setUp() throws Exception {
-        //selenideDriver= (SelenideDriver) DriverFactory.getDriver();
-    }
+
     @Test
     public void search_selenide_google() throws InterruptedException {
         open("http://google.com");

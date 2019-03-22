@@ -39,6 +39,7 @@ public enum DriverType implements DriverSetup {
     }
 
     public WebDriver getWebDriverObject(DesiredCapabilities capabilities) {
+      capabilities = DesiredCapabilities.chrome(); //new
       return new ChromeDriver(capabilities);
     }
   },
